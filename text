@@ -1,0 +1,25 @@
+It is a virtual mac80211 driver in the kernel source at drivers/net/wireless/virtual/ (older kernels: drivers/net/wireless/).
+It shows ieee80211_alloc_hw, ieee80211_register_hw, the ieee80211_ops table, tx and ieee80211_rx in working code.
+Your driver is essentially a stripped-down version of it.
+
+The kernel-doc comments in include/net/mac80211.h and include/net/cfg80211.h are also very useful.
+
+(-)Linux Wireless wiki: wireless.wiki.kernel.org, which has driver-writing guides and mailing list links.
+
+Raspberry Pi kernel source: github.com/raspberrypi/linux. Use the branch matching your running kernel.
+
+Books and courses: Linux Device Drivers (LDD3) for module basics, and the free Bootlin kernel and driver training slides at bootlin.com/training.
+
+
+****Linux 802.11 Driver Developer’s Guide: listed under Driver APIs → Subsystem-specific APIs at docs.kernel.org/driver-api/80211/. 
+
+It has the mac80211 pages, including receive and transmit processing.
+
+Linux Wireless docs: wireless.docs.kernel.org. Its cfg80211 notes are mostly for FullMAC devices, and mac80211 has its own API notes, so for your SoftMAC driver use the mac80211 pages
+
+
+
+
+mac80211 driver API: https://docs.kernel.org/driver-api/80211/mac80211.html
+cfg80211: https://docs.kernel.org/driver-api/80211/cfg80211.html
+Linux Wireless docs: https://wireless.docs.kernel.org
