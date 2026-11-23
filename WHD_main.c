@@ -6,6 +6,7 @@
 #include <net/cfg80211.h>
 #include <net/mac80211.h>
 
+
 #define DRV_NAME "SOFTMAC"
 
 /* Global driver structures */
