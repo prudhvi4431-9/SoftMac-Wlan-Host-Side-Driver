@@ -7,8 +7,6 @@
 #include <net/mac80211.h>
 
 
-
-
 #define DRV_NAME "SOFTMAC"
 
 /* Global driver structures */
@@ -187,16 +185,15 @@ static const struct ieee80211_ops wlan_ops = {
     .change_chanctx   = ieee80211_emulate_change_chanctx,
 };
 
-/* Supported 2.4 GHz channel */
-static struct ieee80211_channel wlan_channels_2ghz[] = {
-    {
-        .band = NL80211_BAND_2GHZ,
-        .center_freq = 2412,
-        .hw_value = 1,
-    },
-};
 
 /* Supported rates */
+static struct ieee80211_rate wlan_rates_2ghz[] = {
+    { .bitrate = 10,  .hw_value = 0 },
+    { .bitrate = 20,  .hw_value = 1 },
+    { .bitrate = 55,  .hw_value = 2 },
+    { .bitrate = 110, .hw_value = 3 },
+};
+//supported channels
 static struct ieee80211_channel wlan_channels_2ghz[] = {
     {
         .band = NL80211_BAND_2GHZ,
