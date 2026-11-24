@@ -7,6 +7,8 @@
 #include <net/mac80211.h>
 
 
+
+
 #define DRV_NAME "SOFTMAC"
 
 /* Global driver structures */
@@ -195,15 +197,23 @@ static struct ieee80211_channel wlan_channels_2ghz[] = {
 };
 
 /* Supported rates */
-static struct ieee80211_rate wlan_rates_2ghz[] = {
-
-    { .bitrate = 10,  .hw_value = 0 },
-    { .bitrate = 20,  .hw_value = 1 },
-    { .bitrate = 55,  .hw_value = 2 },
-    { .bitrate = 110, .hw_value = 3 },
-
+static struct ieee80211_channel wlan_channels_2ghz[] = {
+    {
+        .band = NL80211_BAND_2GHZ,
+        .center_freq = 2412,
+        .hw_value = 1,
+    },
+    {
+        .band = NL80211_BAND_2GHZ,
+        .center_freq = 2437,
+        .hw_value = 6,
+    },
+    {
+        .band = NL80211_BAND_2GHZ,
+        .center_freq = 2462,
+        .hw_value = 11,
+    },
 };
-
 /* Supported 2.4 GHz band */
 static struct ieee80211_supported_band wlan_band_2ghz = {
 
@@ -267,6 +277,8 @@ static int __init wlan_driver_init(void)
     /* Configure supported interface modes */
     wlan_hw->wiphy->interface_modes =
         BIT(NL80211_IFTYPE_STATION) |
+        BIT(NL80211_IFTYPE_ADHOC) |
+        BIT(NL80211_IFTYPE_AP) |
         BIT(NL80211_IFTYPE_MONITOR);
 
     /* Configure supported frequency band */
@@ -330,3 +342,4 @@ module_exit(wlan_driver_exit);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("PRUDHVI");
 MODULE_DESCRIPTION("Software-only mac80211 SoftMAC WLAN Driver");
+
