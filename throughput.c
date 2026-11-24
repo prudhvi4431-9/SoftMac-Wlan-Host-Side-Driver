@@ -8,8 +8,7 @@ unsigned long long read_counter(char *name)
     char path[100];
     unsigned long long bytes;
 
-    sprintf(path,
-        "/sys/class/net/wlan0/statistics/%s_bytes", name);
+    sprintf(path,"/sys/class/net/wlan0/statistics/%s_bytes", name);
 
     FILE *fp = fopen(path, "r");
 
@@ -28,15 +27,17 @@ int main()
 
     while (1)
     {
+
         tx1 = read_counter("tx");
         rx1 = read_counter("rx");
 
         sleep(1);
 
         tx2 = read_counter("tx");
-        rx2 = read_counter("rx");
-
-        printf("TX: %.2f Mbps | RX: %.2f Mbps\n",
+	rx2 = read_counter("rx");
+	if((tx2-tx1)==0&&(rx2-rx1)==0)
+		continue;
+	printf("TX: %.2f Mbps | RX: %.2f Mbps\n",
             (tx2 - tx1) * 8.0 / 1000000,
             (rx2 - rx1) * 8.0 / 1000000);
     }

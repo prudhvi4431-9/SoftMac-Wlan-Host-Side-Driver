@@ -259,8 +259,7 @@ static int __init wlan_driver_init(void)
         ieee80211_free_hw(wlan_hw);
         wlan_hw = NULL;
 
-	pr_err("WLAN: Platform device registration failed: %d\n",
-			ret);
+	pr_err("WLAN: Platform device registration failed: %d\n",ret);
 
         return ret;
     }
