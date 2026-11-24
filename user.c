@@ -102,7 +102,7 @@ int main(void)
 	    sizeof(payload) - 1;
 
     /* Inject five DATA frames */
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 100000000; i++) {
 
         hdr->sequence = htole16(i << 4);
 
@@ -116,7 +116,7 @@ int main(void)
 
 
         printf("DATA frame %d sent\n", i + 1);
-        sleep(1);
+//        sleep(1);
     }
 
     close(sock);
